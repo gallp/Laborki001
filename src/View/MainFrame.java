@@ -1,19 +1,15 @@
 package View;
 
-import Model.Zadanie12Model;
+
 
 import javax.swing.*;
 import java.awt.*;
-
 
 
 public class MainFrame extends JFrame {
 
     private WestPanel westPanel;
     private CenterPanel centerPanel;
-    private Zadanie12 zadanie12;
-    private Zadanie12Model zadanie12Model;
-
 
     public MainFrame() {
         super("Laborki 0001");
@@ -48,7 +44,7 @@ public class MainFrame extends JFrame {
                         String str = centerPanel.getZadanie12().getTextField01();
                         centerPanel.setTextArea(centerPanel.getZadanie12Model().silnia(str).toString());
                         System.out.println(str);
-                        System.out.println("GIT CHECK");
+
                     }
                 });
                 System.out.println("btn02 Clicked");
@@ -58,6 +54,26 @@ public class MainFrame extends JFrame {
             public void btn03Clicked() {
                 centerPanel.refresh();
                 System.out.println("btn03 Clicked");
+                centerPanel.addZadanie13();
+                centerPanel.getZadanie13().setZadanie13ButtonListener(new Zadanie13ButtonListener() {
+                    @Override
+                    public void sumaButtonClicked() {
+                       String str  = centerPanel.getZadanie13().getTextfield01();
+
+                        try {
+
+                            Integer n = Integer.parseInt(str);
+                            Integer wynik = centerPanel.getZadanie13Model().getSum(n);
+                            centerPanel.setTextArea(wynik.toString());
+                        } catch (NumberFormatException e) {
+                            e.printStackTrace();
+                        }
+
+
+
+
+                    }
+                });
             }
         });
 
