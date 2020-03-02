@@ -15,6 +15,7 @@ public class CenterPanel extends JPanel {
     private Zadanie13 zadanie13;
     private Zadanie13Model zadanie13Model;
     private JTextArea textArea;
+    private JTextArea textAreaZadanie;
 
     public CenterPanel() {
         super();
@@ -23,6 +24,8 @@ public class CenterPanel extends JPanel {
         setLayout(new BorderLayout());
         textArea = new JTextArea();
         textArea.setLineWrap(true);
+        textAreaZadanie = new JTextArea();
+        textAreaZadanie.setLineWrap(true);
 
     }
     public void setTextArea(String str) {
@@ -36,6 +39,7 @@ public class CenterPanel extends JPanel {
         textArea.setMinimumSize(new Dimension(100,100));
         textArea.setPreferredSize(new Dimension(100,100));
         textArea.setMaximumSize(new Dimension(100,100));
+
         JScrollPane scrollPane = new JScrollPane(textArea);
         add(scrollPane,BorderLayout.SOUTH);
 
@@ -47,6 +51,12 @@ public class CenterPanel extends JPanel {
         this.zadanie13 = new Zadanie13();
         this.zadanie13Model = new Zadanie13Model();
         add(zadanie13,BorderLayout.CENTER);
+        textAreaZadanie.setText("Zadanie 1.3.\n" +
+                "Napisać program sumujący liczby nieparzyste z przedziału od 1 do n, " +
+                "gdzie n podaje użytkownik na starcie programu.\nProgram powinien zakończyć sumowanie na liczbie n, " +
+                "gdy liczba n jest nieparzysta lub na liczbie n − 1, gdy liczba n jest parzysta.");
+        add(textAreaZadanie,BorderLayout.NORTH);
+        textArea.setText(null);
     }
     public Zadanie13 getZadanie13() {
         return zadanie13;
@@ -60,6 +70,11 @@ public class CenterPanel extends JPanel {
         this.zadanie12 = new Zadanie12();
         this.zadanie12Model = new Zadanie12Model();
         add(zadanie12,BorderLayout.CENTER);
+        textAreaZadanie.setText("Zadanie 1.2.\n" +
+                "Korzystając z klasy BigInteger napisać program, który wyznacza silnię z podanej liczby całkowitej n " +
+                "nawet dla dużych n (rzędu kilkuset).");
+        add(textAreaZadanie,BorderLayout.NORTH);
+        textArea.setText(null);
     }
     public Zadanie12 getZadanie12() {
         return this.zadanie12;

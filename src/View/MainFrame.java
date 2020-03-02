@@ -58,20 +58,23 @@ public class MainFrame extends JFrame {
                 centerPanel.getZadanie13().setZadanie13ButtonListener(new Zadanie13ButtonListener() {
                     @Override
                     public void sumaButtonClicked() {
-                       String str  = centerPanel.getZadanie13().getTextfield01();
+
+                        String str  = centerPanel.getZadanie13().getTextfield01();
 
                         try {
+                            if(Integer.parseInt(str) >=0) {
 
-                            Integer n = Integer.parseInt(str);
-                            Integer wynik = centerPanel.getZadanie13Model().getSum(n);
-                            centerPanel.setTextArea(wynik.toString());
+                                Integer n = Integer.parseInt(str);
+                                Integer wynik = centerPanel.getZadanie13Model().getSum(n);
+                                centerPanel.setTextArea(wynik.toString());
+                            } else {
+                                centerPanel.setTextArea("Invalid Input\nValue must be positive number");
+                            }
+
                         } catch (NumberFormatException e) {
                             e.printStackTrace();
+                            centerPanel.setTextArea("Invalid Input\nValue must be positive number");
                         }
-
-
-
-
                     }
                 });
             }
