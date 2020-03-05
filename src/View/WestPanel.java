@@ -76,8 +76,8 @@ public class WestPanel extends JPanel {
         btn002 = new JButton("Zadanie 1.2");
         btn003 = new JButton("Zadanie 1.3");
         btn004 = new JButton("Zadanie 1.4");
-        btn005 = new JButton("Zadanie 1.5");
-        btn006 = new JButton("Zadanie 1.6");
+        btn005 = new JButton("Zadanie 2.1");
+        btn006 = new JButton("Zadanie 2.2");
 
 
         add(btn001,gc);
@@ -88,8 +88,10 @@ public class WestPanel extends JPanel {
         gc.gridy++;
         add(btn004,gc);
         gc.gridy++;
-        gc.weighty = 9;
         add(btn005,gc);
+        gc.gridy++;
+        gc.weighty = 9;
+        add(btn006,gc);
 
     }
 
