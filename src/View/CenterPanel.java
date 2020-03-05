@@ -14,6 +14,7 @@ public class CenterPanel extends JPanel {
     private Zadanie12Model zadanie12Model;
     private Zadanie13 zadanie13;
     private Zadanie13Model zadanie13Model;
+
     private JTextArea textArea;
     private JTextArea textAreaZadanie;
 
