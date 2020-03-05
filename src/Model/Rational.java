@@ -14,8 +14,8 @@ public class Rational {
 
     public Rational add(Rational arg) {
         this.licznik = this.licznik*arg.getMianownik();
-        arg.setLicznik(arg.getLicznik()*this.mianownik);
-        Rational wynik = new Rational(this.licznik+arg.getLicznik(),this.mianownik * arg.getMianownik());
+        arg.setLicznik(arg.getLicznik() * this.mianownik);
+        Rational wynik = new Rational(this.licznik + arg.getLicznik(),this.mianownik * arg.getMianownik());
         red(wynik);
         return wynik;
     }
@@ -40,13 +40,18 @@ public class Rational {
             }
         }
 
-        else {
+        else if (arg.licznik > arg.mianownik){
             for(int i = 2; i <= mianownik; i++) {
+
                 if(arg.licznik % i == 0 && arg.mianownik % i == 0) {
                     arg.licznik/=i;
                     arg.mianownik/=i;
                 }
             }
+        }
+        else {
+            arg.licznik = 1;
+            arg.mianownik = 1;
         }
         return arg;
     }
