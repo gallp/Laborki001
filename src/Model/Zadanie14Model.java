@@ -4,6 +4,7 @@ public class Zadanie14Model {
 
     public StringBuilder decToBin(Integer number) {
         StringBuilder input = new StringBuilder();
+        if(number == 0) input.insert(0,0);
         while (number > 0) {
             input.insert(0, number % 2 );
             number >>= 1 ;
@@ -13,6 +14,7 @@ public class Zadanie14Model {
 
     public StringBuilder decToOct(Integer number) {
         StringBuilder input = new StringBuilder();
+        if(number == 0) input.insert(0,0);
         while (number > 0) {
             input.insert(0, number % 8);
             number >>= 3;
@@ -22,6 +24,7 @@ public class Zadanie14Model {
 
     public StringBuilder decToHex(Integer number) {
         StringBuilder input = new StringBuilder();
+        if(number == 0) input.insert(0,0);
         while (number > 0) {
             if(number % 16 < 10)
                 input.insert(0,number % 16);

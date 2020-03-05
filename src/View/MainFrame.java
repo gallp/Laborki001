@@ -1,10 +1,7 @@
 package View;
 
-
-
 import javax.swing.*;
 import java.awt.*;
-
 
 public class MainFrame extends JFrame {
 
@@ -24,7 +21,6 @@ public class MainFrame extends JFrame {
 
         add(westPanel,BorderLayout.WEST);
         add(centerPanel,BorderLayout.CENTER);
-
 
         westPanel.setWestPaneButtonListener(new WestPanelButtonListener() {
             @Override
@@ -78,6 +74,50 @@ public class MainFrame extends JFrame {
                     }
                 });
             }
+
+            @Override
+            public void btn04Clicked() {
+                centerPanel.refresh();
+                System.out.println("btn04 Clicked");
+                centerPanel.addZadanie14();
+                centerPanel.getZadanie14().setZadanie14ButtonListener(new Zadanie14ButtonListener() {
+                    @Override
+                    public void btn01Clicked() {
+                        try {
+                            String str00 = centerPanel.getZadanie14().getTextField01();
+                            int choice = centerPanel.getZadanie14().getComboBox();
+                            int number = Integer.parseInt(str00);
+                            if(number >=0) {
+                                switch (choice) {
+                                    case 0:
+                                        String str01 = centerPanel.getZadanie14Model().decToBin(number).toString();
+                                        centerPanel.setTextArea(str01);
+                                    break;
+                                    case 1:
+                                        String str02 = centerPanel.getZadanie14Model().decToOct(number).toString();
+                                        centerPanel.setTextArea("0" + str02);
+                                    break;
+                                    case 2:
+                                        String str03 = centerPanel.getZadanie14Model().decToHex(number).toString();
+                                        centerPanel.setTextArea("0x" + str03);
+                                    break;
+                                }
+                            }
+                                else centerPanel.setTextArea("Invalid Input\nValue must be positive number");
+                        } catch (NumberFormatException e) {
+                            e.printStackTrace();
+                            centerPanel.setTextArea("Invalid Input\nValue must be positive number");
+                        }
+
+                    }
+                });
+            }
+
+
+
+
+
+
         });
 
 

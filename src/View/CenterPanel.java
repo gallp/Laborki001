@@ -2,6 +2,7 @@ package View;
 
 import Model.Zadanie12Model;
 import Model.Zadanie13Model;
+import Model.Zadanie14Model;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -14,6 +15,8 @@ public class CenterPanel extends JPanel {
     private Zadanie12Model zadanie12Model;
     private Zadanie13 zadanie13;
     private Zadanie13Model zadanie13Model;
+    private Zadanie14 zadanie14;
+    private Zadanie14Model zadanie14Model;
 
     private JTextArea textArea;
     private JTextArea textAreaZadanie;
@@ -46,7 +49,21 @@ public class CenterPanel extends JPanel {
 
     }
 
+    public void addZadanie14() {
+        this.zadanie14 = new Zadanie14();
+        this.zadanie14Model = new Zadanie14Model();
+        add(zadanie14,BorderLayout.CENTER);
+        textAreaZadanie.setText("blabla blabla");
+        add(textAreaZadanie, BorderLayout.NORTH);
+        textArea.setText(null);
 
+    }
+    public Zadanie14 getZadanie14() {
+        return zadanie14;
+    }
+    public Zadanie14Model getZadanie14Model() {
+        return zadanie14Model;
+    }
 
     public void addZadanie13() {
         this.zadanie13 = new Zadanie13();

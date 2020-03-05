@@ -1,7 +1,6 @@
 package Model;
 
 import javax.swing.*;
-import java.awt.*;
 import java.math.BigInteger;
 
 public class Zadanie12Model {

@@ -23,7 +23,6 @@ public class WestPanel extends JPanel {
         btn001.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-
                 if(listener != null) {
                     listener.btn01Clicked();
                 }
@@ -33,7 +32,6 @@ public class WestPanel extends JPanel {
         btn002.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent a) {
-
                 if(listener != null) {
                     listener.btn02Clicked();
                 }
@@ -43,13 +41,20 @@ public class WestPanel extends JPanel {
         btn003.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent a) {
-
                 if(listener != null) {
                     listener.btn03Clicked();
                 }
             }
         });
 
+        btn004.addActionListener((new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent a) {
+                if(listener != null) {
+                    listener.btn04Clicked();
+                }
+            }
+        }));
     }
 
     public void setWestPaneButtonListener (WestPanelButtonListener listener) {
