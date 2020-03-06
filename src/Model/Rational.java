@@ -7,16 +7,18 @@ public class Rational {
 
     public Rational(int licznik, int mianownik) {
 
+
         this.licznik = licznik;
         if(mianownik == 0) throw new IllegalArgumentException("mianownik = 0");
-        else this.mianownik =mianownik;
+        else this.mianownik = mianownik;
     }
 
     public Rational add(Rational arg) {
-        this.licznik = this.licznik*arg.getMianownik();
-        arg.setLicznik(arg.getLicznik() * this.mianownik);
-        Rational wynik = new Rational(this.licznik + arg.getLicznik(),this.mianownik * arg.getMianownik());
-        red(wynik);
+        int wLicznik =  this.licznik * arg.getMianownik() + arg.getLicznik() * this.mianownik;
+        int wMianownik =  this.mianownik * arg.getMianownik();
+        Rational wynik = new Rational(wLicznik,wMianownik);
+
+        reduce(wynik);
         return wynik;
     }
     public Rational mul(Rational arg) {
@@ -24,28 +26,55 @@ public class Rational {
         int wLicznik = this.licznik * arg.getLicznik();
         int wMianownik = this.mianownik * arg.getMianownik();
         Rational wynik = new Rational(wLicznik, wMianownik);
-        red(wynik);
+        reduce(wynik);
         return wynik;
     }
 
-    public Rational red(Rational arg) {
-        if (arg.licznik < arg.mianownik) {
+    public Rational sub(Rational arg) {
 
-            for(int i = 2; i <= licznik; i++) {
+        int wLicznik =  this.licznik * arg.getMianownik() - arg.getLicznik() * this.mianownik;
+        int wMianownik =  this.mianownik * arg.getMianownik();
+        Rational wynik = new Rational(wLicznik,wMianownik);
+        reduce(wynik);
+        return wynik;
+    }
 
+    public Rational div(Rational arg) {
+
+        int wLicznik = this.licznik * arg.getMianownik();
+        int wMianownik = this.mianownik * arg.getLicznik();
+        Rational wynik = new Rational(wLicznik, wMianownik);
+        reduce(wynik);
+        return wynik;
+    }
+
+
+    boolean equals(Rational arg) {
+        return false;
+    }
+
+    int compareTo(Rational arg) {
+        return 0;
+    }
+
+    public Rational reduce(Rational arg) {
+        if (Math.abs(arg.licznik) < Math.abs(arg.mianownik)) {
+
+            for(int i = 2; i <= Math.abs(arg.licznik); i++) {
                 if(arg.licznik % i == 0 && arg.mianownik % i == 0) {
                     arg.licznik/=i;
                     arg.mianownik/=i;
+                    i = 1;
                 }
             }
         }
+        else if(Math.abs(arg.licznik) > Math.abs(arg.mianownik)) {
 
-        else if (arg.licznik > arg.mianownik){
-            for(int i = 2; i <= mianownik; i++) {
-
+            for(int i = 2; i <= Math.abs(arg.mianownik); i++) {
                 if(arg.licznik % i == 0 && arg.mianownik % i == 0) {
                     arg.licznik/=i;
                     arg.mianownik/=i;
+                    i = 1;
                 }
             }
         }
@@ -54,22 +83,6 @@ public class Rational {
             arg.mianownik = 1;
         }
         return arg;
-    }
-
-    public Rational sub(Rational arg) {
-        return null;
-    }
-
-    public Rational div(Rational arg) {
-        return null;
-    }
-
-    boolean equals(Rational arg) {
-        return false;
-    }
-
-    int compareTo(Rational arg) {
-        return 0;
     }
 
     public int getLicznik() {
