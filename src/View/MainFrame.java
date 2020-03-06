@@ -1,7 +1,10 @@
 package View;
 
+import Model.Rational;
+
 import javax.swing.*;
 import java.awt.*;
+import java.net.Inet4Address;
 
 public class MainFrame extends JFrame {
 
@@ -112,8 +115,55 @@ public class MainFrame extends JFrame {
                     }
                 });
             }
+            @Override
+            public void btn05Clicked() {
+                centerPanel.refresh();
+                System.out.println("btn05 Clicked");
+                centerPanel.addZadanie21();
+
+                centerPanel.getZadanie21().setZadanie21ButtonListener(new Zadanie21ButtonListener() {
+                    @Override
+                    public void btn01Clicked() {
+
+                        try {
+                            int r1Licznik = Integer.parseInt(centerPanel.getZadanie21().getTextField01().getText());
+                            int r1Mianownik = Integer.parseInt(centerPanel.getZadanie21().getTextField02().getText());
+                            int r2Licznik = Integer.parseInt(centerPanel.getZadanie21().getTextField03().getText());
+                            int r2Mianownik = Integer.parseInt(centerPanel.getZadanie21().getTextField04().getText());
+                            int choice = centerPanel.getZadanie21().getComboBox().getSelectedIndex();
+                            switch(choice) {
+                                case 0:
+                                    centerPanel.getRational01().setLicznik(r1Licznik);
+                                    centerPanel.getRational01().setMianownik(r1Mianownik);
+                                    centerPanel.getRational02().setLicznik(r2Licznik);
+                                    centerPanel.getRational02().setMianownik(r2Mianownik);
+                                    Rational wynik = centerPanel.getRational01().add(centerPanel.getRational02());
+                                    centerPanel.setTextArea(wynik.toString());
+
+                                    break;
+                                case 1:
+
+                                    break;
+                                case 2:
+
+                                    break;
+                                case 3:
+
+                                    break;
+                            }
+                        } catch (NumberFormatException e) {
+                            e.printStackTrace();
+                            System.out.println("Invalid Input");
+                        }
 
 
+
+
+
+                    }
+                });
+
+            }
 
 
 

@@ -55,6 +55,15 @@ public class WestPanel extends JPanel {
                 }
             }
         }));
+
+        btn005.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent a) {
+                if(listener != null) {
+                    listener.btn05Clicked();
+                }
+            }
+        });
     }
 
     public void setWestPaneButtonListener (WestPanelButtonListener listener) {

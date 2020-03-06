@@ -7,7 +7,6 @@ public class Rational {
 
     public Rational(int licznik, int mianownik) {
 
-
         this.licznik = licznik;
         if(mianownik == 0) throw new IllegalArgumentException("mianownik = 0");
         else this.mianownik = mianownik;
@@ -83,6 +82,11 @@ public class Rational {
             arg.mianownik = 1;
         }
         return arg;
+    }
+
+    public String toString() {
+        String str = String.valueOf(this.licznik) + "/" + String.valueOf(this.mianownik);
+        return str;
     }
 
     public int getLicznik() {

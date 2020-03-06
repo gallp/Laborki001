@@ -1,11 +1,13 @@
 package View;
 
+import Model.Rational;
 import Model.Zadanie12Model;
 import Model.Zadanie13Model;
 import Model.Zadanie14Model;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 
@@ -17,6 +19,9 @@ public class CenterPanel extends JPanel {
     private Zadanie13Model zadanie13Model;
     private Zadanie14 zadanie14;
     private Zadanie14Model zadanie14Model;
+    private Zadanie21 zadanie21;
+    private Rational rational01;
+    private Rational rational02;
 
     private JTextArea textArea;
     private JTextArea textAreaZadanie;
@@ -45,15 +50,57 @@ public class CenterPanel extends JPanel {
         textArea.setMaximumSize(new Dimension(100,100));
 
         JScrollPane scrollPane = new JScrollPane(textArea);
-        add(scrollPane,BorderLayout.SOUTH);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        add(scrollPane, BorderLayout.SOUTH);
 
+    }
+
+    public void addZadanie21() {
+        this.zadanie21 = new Zadanie21();
+        this.rational01 = new Rational(1,1);
+        this.rational02 = new Rational(1,1);
+        add(zadanie21,BorderLayout.CENTER);
+        textAreaZadanie.setText("Zaprojektuj klasę Rational, reprezentującą liczby wymierne jako pary liczb całkowitych (licznik i mianownik), wraz z podstawowymi działaniami arytmetycznymi i porównaniem. W klasie powinny znaleźć się nastę-pujące metody publiczne (oprócz konstruktora):\n" +
+                "1. dodawanie: Rational add(Rational arg);\n" +
+                "2. mnożenie: Rational mul(Rational arg);\n" +
+                "3. odejmowanie: Rational sub(Rational arg);\n" +
+                "4. dzielenie: Rational div(Rational arg);\n" +
+                "5. równość: boolean equals(Rational arg);\n" +
+                "6. porównanie: int compareTo(Rational arg);\n" +
+                "7. tekstowa reprezentacja liczby: String toString().\n" +
+                "Metody 1–4 powinny zwracać jako rezultat referencję do nowego obiektu klasy Rational, będącego wynikiem operacji wykonanej na argumencie arg i this. Metoda 5. ma porównywać obiekty klasy Rational na podstawie wartości liczb, np. 1/2 = 2/4. Metoda 6. ma działać podobnie, jak odpowiadająca jej metoda compareTo(Object o) z interfejsu\n" +
+                "java.lang.Comparable:\n" +
+                "• Jeśli this jest równe arg, to zwraca 0.\n" +
+                "• Jeśli this jest mniejsze od arg, to zwraca −1.\n" +
+                "• Jeśli this jest większe niż arg, to zwraca 1.\n" +
+                "Metoda 7. ma zwracać łańcuch znakowy opisujący ten obiekt. Na przykład może to być napis postaci 1/2 lub -1/1.");
+        Border outer = new EtchedBorder();
+        textAreaZadanie.setBorder(outer);
+        add(textAreaZadanie, BorderLayout.NORTH);
+        textArea.setText(null);
+
+    }
+
+    public Zadanie21 getZadanie21() {
+        return zadanie21;
+    }
+
+    public Rational getRational01() {
+        return rational01;
+    }
+    public Rational getRational02() {
+        return rational02;
     }
 
     public void addZadanie14() {
         this.zadanie14 = new Zadanie14();
         this.zadanie14Model = new Zadanie14Model();
         add(zadanie14,BorderLayout.CENTER);
-        textAreaZadanie.setText("blabla blabla");
+        textAreaZadanie.setText("Należy zaimplementować trzy metody pobierające jako argument liczbę całkowitą typu int i zwracającą łańcuch znakowy (obiekt klasy String) będący:\n" +
+                "1. binarną reprezentacją argumentu,\n" +
+                "2. ósemkową reprezentacją argumentu,\n" +
+                "3. szesnastkową reprezentacją argumentu.");
+
         add(textAreaZadanie, BorderLayout.NORTH);
         textArea.setText(null);
 
