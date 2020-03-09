@@ -16,7 +16,6 @@ public class Rational {
         int wLicznik =  this.licznik * arg.getMianownik() + arg.getLicznik() * this.mianownik;
         int wMianownik =  this.mianownik * arg.getMianownik();
         Rational wynik = new Rational(wLicznik,wMianownik);
-
         reduce(wynik);
         return wynik;
     }
@@ -48,11 +47,27 @@ public class Rational {
     }
 
 
-    boolean equals(Rational arg) {
-        return false;
+    public boolean equals(Rational arg) {
+        reduce(this);
+        reduce(arg);
+        if(this.licznik == arg.licznik && this.mianownik == arg.mianownik)
+            return true;
+        else
+            return false;
     }
 
-    int compareTo(Rational arg) {
+    public int compareTo(Rational arg) {
+        reduce(this);
+        reduce(arg);
+        double ilorazR1 = (double)this.licznik/(double)this.mianownik;
+        double ilorazR2 = (double)arg.licznik/(double)arg.mianownik;
+
+        if(ilorazR1 > ilorazR2) {
+            return 1;
+        }
+        else if(ilorazR1 < ilorazR2) {
+            return -1;
+        }
         return 0;
     }
 

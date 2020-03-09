@@ -131,29 +131,41 @@ public class MainFrame extends JFrame {
                             int r2Licznik = Integer.parseInt(centerPanel.getZadanie21().getTextField03().getText());
                             int r2Mianownik = Integer.parseInt(centerPanel.getZadanie21().getTextField04().getText());
                             int choice = centerPanel.getZadanie21().getComboBox().getSelectedIndex();
+                            centerPanel.getRational01().setLicznik(r1Licznik);
+                            centerPanel.getRational01().setMianownik(r1Mianownik);
+                            centerPanel.getRational02().setLicznik(r2Licznik);
+                            centerPanel.getRational02().setMianownik(r2Mianownik);
+                            Rational wynik = new Rational(1,1);
                             switch(choice) {
                                 case 0:
-                                    centerPanel.getRational01().setLicznik(r1Licznik);
-                                    centerPanel.getRational01().setMianownik(r1Mianownik);
-                                    centerPanel.getRational02().setLicznik(r2Licznik);
-                                    centerPanel.getRational02().setMianownik(r2Mianownik);
-                                    Rational wynik = centerPanel.getRational01().add(centerPanel.getRational02());
+                                    wynik = centerPanel.getRational01().add(centerPanel.getRational02());
                                     centerPanel.setTextArea(wynik.toString());
-
-                                    break;
+                                break;
                                 case 1:
-
-                                    break;
+                                    wynik = centerPanel.getRational01().mul(centerPanel.getRational02());
+                                    centerPanel.setTextArea(wynik.toString());
+                                break;
                                 case 2:
-
-                                    break;
+                                    wynik = centerPanel.getRational01().sub(centerPanel.getRational02());
+                                    centerPanel.setTextArea(wynik.toString());
+                                break;
                                 case 3:
-
-                                    break;
+                                    wynik = centerPanel.getRational01().div(centerPanel.getRational02());
+                                    centerPanel.setTextArea(wynik.toString());
+                                break;
+                                case 4:
+                                    Boolean wynikB = centerPanel.getRational01().equals(centerPanel.getRational02());
+                                    centerPanel.setTextArea(wynikB.toString());
+                                break;
+                                case 5:
+                                    Integer wynikC = centerPanel.getRational01().compareTo(centerPanel.getRational02());
+                                    centerPanel.setTextArea(wynikC.toString());
+                                break;
                             }
                         } catch (NumberFormatException e) {
                             e.printStackTrace();
                             System.out.println("Invalid Input");
+                            centerPanel.setTextArea("Invalid Input");
                         }
 
 

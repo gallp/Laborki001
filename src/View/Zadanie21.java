@@ -16,7 +16,7 @@ public class Zadanie21 extends JPanel{
     private JComboBox comboBox;
     private JButton btn01;
     private Zadanie21ButtonListener listener;
-    private String[] arr = {"Suma","Różnica","Iloczyn","Iloraz"};
+    private String[] arr = {"Add","Mul","Sub","Div","Equals","CompareTo"};
 
     public Zadanie21() {
         super();
