@@ -9,6 +9,11 @@ public class FunkcjaKwadratowa {
     private double c;
     private HashMap<String, Double> map;
 
+    public FunkcjaKwadratowa() {
+        a = 0;
+        b = 0;
+        c = 0;
+    }
 
     public FunkcjaKwadratowa(double a, double b, double c) {
         this.a = a;

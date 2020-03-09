@@ -167,17 +167,38 @@ public class MainFrame extends JFrame {
                             System.out.println("Invalid Input");
                             centerPanel.setTextArea("Invalid Input");
                         }
-
-
-
-
-
                     }
                 });
-
             }
 
+            @Override
+            public void btn06Clicked() {
+                centerPanel.refresh();
+                System.out.println("btn06 Clicked");
+                centerPanel.addZadanie22();
 
+                centerPanel.getZadanie22().setZadanie22ButtonListener(new Zadanie22ButtonListener() {
+                    @Override
+                    public void btn01Clicked() {
+                        try {
+                            Double a = Double.parseDouble(centerPanel.getZadanie22().getTextField01());
+                            Double b = Double.parseDouble(centerPanel.getZadanie22().getTextField02());
+                            Double c = Double.parseDouble(centerPanel.getZadanie22().getTextField03());
+                            centerPanel.getFunkcjaKwadratowa().setA(a);
+                            centerPanel.getFunkcjaKwadratowa().setB(b);
+                            centerPanel.getFunkcjaKwadratowa().setC(c);
+                            Double delta = centerPanel.getFunkcjaKwadratowa().getDelta();
+                            Integer numOfZeroP = centerPanel.getFunkcjaKwadratowa().getNumOfZeroPoint(delta);
+                            centerPanel.setTextArea("Liczba Pierwiastków = " + numOfZeroP.toString());
+
+                        } catch (NumberFormatException e) {
+                            e.printStackTrace();
+                            System.out.println("Invalid Input");
+                            centerPanel.setTextArea("Invalid Input");
+                        }
+                    }
+                });
+            }
 
 
         });

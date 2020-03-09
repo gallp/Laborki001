@@ -1,9 +1,6 @@
 package View;
 
-import Model.Rational;
-import Model.Zadanie12Model;
-import Model.Zadanie13Model;
-import Model.Zadanie14Model;
+import Model.*;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -22,6 +19,8 @@ public class CenterPanel extends JPanel {
     private Zadanie21 zadanie21;
     private Rational rational01;
     private Rational rational02;
+    private Zadanie22 zadanie22;
+    private FunkcjaKwadratowa funkcjaKwadratowa;
 
     private JTextArea textArea;
     private JTextArea textAreaZadanie;
@@ -54,6 +53,33 @@ public class CenterPanel extends JPanel {
         add(scrollPane, BorderLayout.SOUTH);
 
     }
+    public void addZadanie22() {
+        this.zadanie22 = new Zadanie22();
+        this.funkcjaKwadratowa = new FunkcjaKwadratowa();
+        add(zadanie22,BorderLayout.CENTER);
+        textAreaZadanie.setText("Napisz klasę opisującą równanie kwadratowe o postaci y = ax2+ bx +c. Współczynniki\n" +
+                "a, b i c powinny być prywatne. Zdefiniuj następujące publiczne funkcje składowe:\n" +
+                "• nadającą wartości współczynnikom,\n" +
+                "• obliczającą y dla podanego x,\n" +
+                "• wyznaczającą liczbę pierwiastków.\n" +
+                "Potrzebne wzory:\n" +
+                "4\n" +
+                "• delta: d = b2− 4ac,\n" +
+                "• liczba pierwiastków:\n" +
+                "p =0 : d < 0, 1 : d = 0, 2 : d > 0.");
+        Border outer = new EtchedBorder();
+        textAreaZadanie.setBorder(outer);
+        add(textAreaZadanie, BorderLayout.NORTH);
+        textArea.setText(null);
+
+    }
+
+    public Zadanie22 getZadanie22() {
+        return zadanie22;
+    }
+    public FunkcjaKwadratowa getFunkcjaKwadratowa() {
+        return funkcjaKwadratowa;
+    }
 
     public void addZadanie21() {
         this.zadanie21 = new Zadanie21();
@@ -84,7 +110,6 @@ public class CenterPanel extends JPanel {
     public Zadanie21 getZadanie21() {
         return zadanie21;
     }
-
     public Rational getRational01() {
         return rational01;
     }

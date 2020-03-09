@@ -64,6 +64,15 @@ public class WestPanel extends JPanel {
                 }
             }
         });
+
+        btn006.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent a) {
+                if(listener!=null) {
+                    listener.btn06Clicked();
+                }
+            }
+        });
     }
 
     public void setWestPaneButtonListener (WestPanelButtonListener listener) {
@@ -99,8 +108,10 @@ public class WestPanel extends JPanel {
         gc.gridy++;
         add(btn005,gc);
         gc.gridy++;
-        gc.weighty = 9;
         add(btn006,gc);
+        gc.gridy++;
+        gc.weighty = 9;
+        add(new JLabel("-------"),gc);
 
     }
 
