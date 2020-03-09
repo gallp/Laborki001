@@ -5,6 +5,7 @@ import Model.Rational;
 import javax.swing.*;
 import java.awt.*;
 import java.net.Inet4Address;
+import java.util.HashMap;
 
 public class MainFrame extends JFrame {
 
@@ -184,21 +185,33 @@ public class MainFrame extends JFrame {
                             Double a = Double.parseDouble(centerPanel.getZadanie22().getTextField01());
                             Double b = Double.parseDouble(centerPanel.getZadanie22().getTextField02());
                             Double c = Double.parseDouble(centerPanel.getZadanie22().getTextField03());
+                            Double x = Double.parseDouble(centerPanel.getZadanie22().getTextField04());
                             centerPanel.getFunkcjaKwadratowa().setA(a);
                             centerPanel.getFunkcjaKwadratowa().setB(b);
                             centerPanel.getFunkcjaKwadratowa().setC(c);
                             Double delta = centerPanel.getFunkcjaKwadratowa().getDelta();
-                            Integer numOfZeroP = centerPanel.getFunkcjaKwadratowa().getNumOfZeroPoint(delta);
-                            centerPanel.setTextArea("Liczba Pierwiastków = " + numOfZeroP.toString());
+                            String numOfZeroP = centerPanel.getFunkcjaKwadratowa().getNumOfZeroPoint(delta).toString();
+                            String pierwiastki = centerPanel.getFunkcjaKwadratowa().getZeroPoints().toString();
+                            String y = centerPanel.getFunkcjaKwadratowa().getWynik(x).toString();
 
-                        } catch (NumberFormatException e) {
+                            centerPanel.setTextArea("Liczba Pierwiastków = " + numOfZeroP.toString() +"\n"
+                            + "Pierwiastki " + pierwiastki +"\n"+ "y = "+ y);
+
+                        }
+                        catch (NumberFormatException e) {
                             e.printStackTrace();
                             System.out.println("Invalid Input");
                             centerPanel.setTextArea("Invalid Input");
                         }
+                        catch (IllegalArgumentException e) {
+                            e.printStackTrace();
+                            centerPanel.setTextArea("a == 0 exception ");
+                        }
                     }
                 });
             }
+
+
 
 
         });
