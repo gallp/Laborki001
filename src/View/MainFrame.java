@@ -211,7 +211,12 @@ public class MainFrame extends JFrame {
                 });
             }
 
-
+            @Override
+            public void btn07Clicked() {
+                centerPanel.refresh();
+                System.out.println("btn07 Clicked");
+                centerPanel.addZadanie41();
+            }
 
 
         });

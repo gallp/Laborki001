@@ -21,6 +21,7 @@ public class CenterPanel extends JPanel {
     private Rational rational02;
     private Zadanie22 zadanie22;
     private FunkcjaKwadratowa funkcjaKwadratowa;
+    private Zadanie41 zadanie41;
 
     private JTextArea textArea;
     private JTextArea textAreaZadanie;
@@ -53,6 +54,15 @@ public class CenterPanel extends JPanel {
         add(scrollPane, BorderLayout.SOUTH);
 
     }
+    public void addZadanie41() {
+        this.zadanie41 = new Zadanie41();
+        add(zadanie41, BorderLayout.CENTER);
+    }
+
+    public Zadanie41 getZadanie41() {
+        return zadanie41;
+    }
+
     public void addZadanie22() {
         this.zadanie22 = new Zadanie22();
         this.funkcjaKwadratowa = new FunkcjaKwadratowa();
