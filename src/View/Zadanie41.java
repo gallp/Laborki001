@@ -28,7 +28,7 @@ public class Zadanie41 extends JPanel {
 
                     try {
                         InputStream iStream = new FileInputStream(f);
-                        InputStreamReader iStreamReader = new InputStreamReader(iStream, "UTF-8");
+                        InputStreamReader iStreamReader = new InputStreamReader(iStream, menuBar.setCodePage());
 
                         int data = iStreamReader.read();
                         while (data != -1) {
@@ -61,7 +61,7 @@ public class Zadanie41 extends JPanel {
                         System.out.println(f);
 
                         OutputStream oStream = new FileOutputStream(f.getAbsolutePath());
-                        OutputStreamWriter oStreamWriter = new OutputStreamWriter(oStream,"UTF-8");
+                        OutputStreamWriter oStreamWriter = new OutputStreamWriter(oStream, menuBar.setCodePage());
                         oStreamWriter.write(str);
                         oStreamWriter.close();
 
@@ -84,6 +84,22 @@ public class Zadanie41 extends JPanel {
             public void item003Selected() {
                 System.out.println("item003 Selected");
             }
+            @Override
+            public void radioButton001Selected() {
+                System.out.println("UTF-8 Selected");
+                menuBar.setCodePage();
+            }
+            @Override
+            public void radioButton002Selected() {
+                System.out.println("costam Selected");
+                menuBar.setCodePage();
+                System.out.println(menuBar.setCodePage());
+            }
+            @Override
+            public void radioButton003Selected() {
+                menuBar.setCodePage();
+            }
+
         });
 
         internalFrame.setDefaultCloseOperation(internalFrame.EXIT_ON_CLOSE);
@@ -94,23 +110,45 @@ public class Zadanie41 extends JPanel {
     private static class MenuBar extends JMenuBar {
 
         private JMenu menu001;
+        private JMenu menu002;
+        private JRadioButton radioButton01;
+        private JRadioButton radioButton02;
+        private JRadioButton radioButton03;
         private JMenuItem item001;
         private JMenuItem item002;
         private JMenuItem item003;
         private MenuBarListener listener;
+        private ButtonGroup bg;
 
         private MenuBar() {
             super();
-
             menu001 = new JMenu("File");
+            menu002 = new JMenu("Code");
+
             item001 = new JMenuItem("Open");
             item002 = new JMenuItem("Save");
             item003 = new JMenuItem("Exit");
 
+            radioButton01 = new JRadioButton("UTF-8");
+            radioButton02 = new JRadioButton("ISO-8859-2");
+            radioButton03 = new JRadioButton("Windows-1250");
+
+            bg = new ButtonGroup();
+
+            bg.add(radioButton01);
+            bg.add(radioButton02);
+            bg.add(radioButton03);
+
             menu001.add(item001);
             menu001.add(item002);
             menu001.add(item003);
+
+            menu002.add(radioButton01);
+            menu002.add(radioButton02);
+            menu002.add(radioButton03);
+
             add(menu001);
+            add(menu002);
             System.out.println("MenuBar Constr.");
 
             item001.addActionListener(new ActionListener() {
@@ -137,6 +175,30 @@ public class Zadanie41 extends JPanel {
                     }
                 }
             });
+            radioButton01.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent actionEvent) {
+                    if(listener != null) {
+                        listener.radioButton001Selected();
+                    }
+                }
+            });
+            radioButton02.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent actionEvent) {
+                    if(listener != null) {
+                        listener.radioButton002Selected();
+                    }
+                }
+            });
+            radioButton03.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent actionEvent) {
+                    if(listener != null) {
+                        listener.radioButton003Selected();
+                    }
+                }
+            });
         }
 
         public void setMenuBarListener(MenuBarListener listener) {
@@ -147,6 +209,30 @@ public class Zadanie41 extends JPanel {
             void item001Selected();
             void item002Selected();
             void item003Selected();
+            void radioButton001Selected();
+            void radioButton002Selected();
+            void radioButton003Selected();
+        }
+
+        private String setCodePage() {
+            String str = "";
+
+            if(bg.getSelection() == radioButton01.getModel()) {
+                str = "UTF-8";
+                System.out.println("UTF-8");
+            }
+
+            if(bg.getSelection() == radioButton02.getModel()) {
+                str = "ISO-8859-2";
+                System.out.println("ISO-8859-2");
+            }
+
+            if(bg.getSelection() == radioButton03.getModel()) {
+                str = "windows-1250";
+                System.out.println("windows-1250");
+            }
+
+            return str;
         }
 
     }
