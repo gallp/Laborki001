@@ -21,11 +21,12 @@ public class FunkcjaKwadratowa {
         this.b = b;
         this.c = c;
         this.map = new HashMap<String, Double>();
-
     }
+
     public Double getWynik(Double x) {
         return a*x*x + b*x + c;
     }
+
     public Integer getNumOfZeroPoint(Double delta) {
         if(delta > 0 && a != 0)
             return 2;
@@ -72,7 +73,6 @@ public class FunkcjaKwadratowa {
 
             if(a == 0) throw new IllegalArgumentException("a == 0");
             this.a = a;
-
     }
 
     public double getB() {

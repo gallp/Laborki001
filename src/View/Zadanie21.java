@@ -32,8 +32,6 @@ public class Zadanie21 extends JPanel{
         });
     }
 
-
-
     public void setZadanie21ButtonListener(Zadanie21ButtonListener listener) {
         this.listener = listener;
     }

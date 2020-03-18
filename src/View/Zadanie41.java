@@ -12,10 +12,10 @@ public class Zadanie41 extends JPanel {
     private MenuBar menuBar;
     private JTextArea textArea;
 
-
     public Zadanie41() {
         super();
         layoutComponents();
+
         menuBar.setMenuBarListener(new MenuBar.MenuBarListener() {
             @Override
             public void item001Selected() {
@@ -46,7 +46,6 @@ public class Zadanie41 extends JPanel {
                     textArea.setText(str);
                 }
             }
-
             @Override
             public void item002Selected() {
                 System.out.println("item002 Selected");
@@ -55,16 +54,12 @@ public class Zadanie41 extends JPanel {
                 if(fc.showSaveDialog(null) == fc.APPROVE_OPTION) {
                     try {
                         String str = textArea.getText();
-                        System.out.println(str);
-
                         File f = fc.getSelectedFile();
-                        System.out.println(f);
 
                         OutputStream oStream = new FileOutputStream(f.getAbsolutePath());
                         OutputStreamWriter oStreamWriter = new OutputStreamWriter(oStream, menuBar.setCodePage());
                         oStreamWriter.write(str);
                         oStreamWriter.close();
-
                     }
                     catch (FileNotFoundException e) {
                         e.printStackTrace();
@@ -75,11 +70,8 @@ public class Zadanie41 extends JPanel {
                     catch (IOException e) {
                         e.printStackTrace();
                     }
-
                 }
-
             }
-
             @Override
             public void item003Selected() {
                 System.out.println("item003 Selected");
@@ -91,32 +83,29 @@ public class Zadanie41 extends JPanel {
             }
             @Override
             public void radioButton002Selected() {
-                System.out.println("costam Selected");
+                System.out.println("ISO-8859-2 Selected");
                 menuBar.setCodePage();
-                System.out.println(menuBar.setCodePage());
             }
             @Override
             public void radioButton003Selected() {
+                System.out.println("Windows-1250 Selected");
                 menuBar.setCodePage();
             }
-
         });
 
         internalFrame.setDefaultCloseOperation(internalFrame.EXIT_ON_CLOSE);
     }
 
-
-
     private static class MenuBar extends JMenuBar {
 
         private JMenu menu001;
         private JMenu menu002;
-        private JRadioButton radioButton01;
-        private JRadioButton radioButton02;
-        private JRadioButton radioButton03;
         private JMenuItem item001;
         private JMenuItem item002;
         private JMenuItem item003;
+        private JRadioButton radioButton01;
+        private JRadioButton radioButton02;
+        private JRadioButton radioButton03;
         private MenuBarListener listener;
         private ButtonGroup bg;
 
@@ -149,6 +138,7 @@ public class Zadanie41 extends JPanel {
 
             add(menu001);
             add(menu002);
+
             System.out.println("MenuBar Constr.");
 
             item001.addActionListener(new ActionListener() {
@@ -161,7 +151,7 @@ public class Zadanie41 extends JPanel {
             });
             item002.addActionListener(new ActionListener() {
                 @Override
-                public void actionPerformed(ActionEvent actionEvent) {
+                public void actionPerformed(ActionEvent a) {
                     if(listener != null) {
                         listener.item002Selected();
                     }
@@ -169,7 +159,7 @@ public class Zadanie41 extends JPanel {
             });
             item003.addActionListener(new ActionListener() {
                 @Override
-                public void actionPerformed(ActionEvent actionEvent) {
+                public void actionPerformed(ActionEvent a) {
                     if(listener != null) {
                         listener.item003Selected();
                     }
@@ -177,7 +167,7 @@ public class Zadanie41 extends JPanel {
             });
             radioButton01.addActionListener(new ActionListener() {
                 @Override
-                public void actionPerformed(ActionEvent actionEvent) {
+                public void actionPerformed(ActionEvent a) {
                     if(listener != null) {
                         listener.radioButton001Selected();
                     }
@@ -185,7 +175,7 @@ public class Zadanie41 extends JPanel {
             });
             radioButton02.addActionListener(new ActionListener() {
                 @Override
-                public void actionPerformed(ActionEvent actionEvent) {
+                public void actionPerformed(ActionEvent a) {
                     if(listener != null) {
                         listener.radioButton002Selected();
                     }
@@ -193,7 +183,7 @@ public class Zadanie41 extends JPanel {
             });
             radioButton03.addActionListener(new ActionListener() {
                 @Override
-                public void actionPerformed(ActionEvent actionEvent) {
+                public void actionPerformed(ActionEvent a) {
                     if(listener != null) {
                         listener.radioButton003Selected();
                     }
@@ -221,17 +211,14 @@ public class Zadanie41 extends JPanel {
                 str = "UTF-8";
                 System.out.println("UTF-8");
             }
-
             if(bg.getSelection() == radioButton02.getModel()) {
                 str = "ISO-8859-2";
                 System.out.println("ISO-8859-2");
             }
-
             if(bg.getSelection() == radioButton03.getModel()) {
                 str = "windows-1250";
                 System.out.println("windows-1250");
             }
-
             return str;
         }
 
@@ -242,19 +229,12 @@ public class Zadanie41 extends JPanel {
 
             internalFrame = new JInternalFrame("Notepad");
             menuBar = new MenuBar();
-
             internalFrame.setJMenuBar(menuBar);
-
             internalFrame.setLayout(new BorderLayout());
-
             textArea = new JTextArea();
             textArea.setLineWrap(true);
-
             internalFrame.add(textArea, BorderLayout.CENTER);
-
             internalFrame.setVisible(true);
             add(internalFrame, BorderLayout.CENTER);
-
-
         }
 }

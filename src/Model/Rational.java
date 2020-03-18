@@ -6,7 +6,6 @@ public class Rational {
     int mianownik;
 
     public Rational(int licznik, int mianownik) {
-
         this.licznik = licznik;
         if(mianownik == 0) throw new IllegalArgumentException("mianownik = 0");
         else this.mianownik = mianownik;
@@ -20,7 +19,6 @@ public class Rational {
         return wynik;
     }
     public Rational mul(Rational arg) {
-
         int wLicznik = this.licznik * arg.getLicznik();
         int wMianownik = this.mianownik * arg.getMianownik();
         Rational wynik = new Rational(wLicznik, wMianownik);
@@ -29,7 +27,6 @@ public class Rational {
     }
 
     public Rational sub(Rational arg) {
-
         int wLicznik =  this.licznik * arg.getMianownik() - arg.getLicznik() * this.mianownik;
         int wMianownik =  this.mianownik * arg.getMianownik();
         Rational wynik = new Rational(wLicznik,wMianownik);
@@ -38,7 +35,6 @@ public class Rational {
     }
 
     public Rational div(Rational arg) {
-
         int wLicznik = this.licznik * arg.getMianownik();
         int wMianownik = this.mianownik * arg.getLicznik();
         Rational wynik = new Rational(wLicznik, wMianownik);
@@ -83,7 +79,6 @@ public class Rational {
             }
         }
         else if(Math.abs(arg.licznik) > Math.abs(arg.mianownik)) {
-
             for(int i = 2; i <= Math.abs(arg.mianownik); i++) {
                 if(arg.licznik % i == 0 && arg.mianownik % i == 0) {
                     arg.licznik/=i;
