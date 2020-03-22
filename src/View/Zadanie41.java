@@ -141,6 +141,8 @@ public class Zadanie41 extends JPanel {
 
             System.out.println("MenuBar Constr.");
 
+            bg.setSelected(radioButton01.getModel(),true);
+
             item001.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent a) {
