@@ -22,6 +22,7 @@ public class CenterPanel extends JPanel {
     private Zadanie22 zadanie22;
     private FunkcjaKwadratowa funkcjaKwadratowa;
     private Zadanie41 zadanie41;
+    private Zadanie42 zadanie42;
 
     private JTextArea textArea;
     private JTextArea textAreaZadanie;
@@ -54,6 +55,23 @@ public class CenterPanel extends JPanel {
         add(scrollPane, BorderLayout.SOUTH);
 
     }
+    public void addZadanie42() {
+        this.zadanie42 = new Zadanie42();
+        add(zadanie42, BorderLayout.CENTER);
+        textAreaZadanie.setText("Napisz program kompresujący plik do formatu GZIP oraz program rozpakowujący plik GZIP.\n" +
+                "Wskazówka\n" +
+                "• Skorzystaj z klas GZIPOutputStream oraz GZIPInputStream.");
+        Border outer = new EtchedBorder();
+        textAreaZadanie.setBorder(outer);
+        add(textAreaZadanie, BorderLayout.NORTH);
+        textArea.setText(null);
+    }
+
+    public Zadanie42 getZadanie42() {
+        return zadanie42;
+    }
+
+
     public void addZadanie41() {
         this.zadanie41 = new Zadanie41();
         add(zadanie41, BorderLayout.CENTER);

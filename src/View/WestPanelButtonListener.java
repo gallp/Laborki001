@@ -10,4 +10,5 @@ public interface WestPanelButtonListener {
     void btn05Clicked();
     void btn06Clicked();
     void btn07Clicked();
+    void btn08Clicked();
 }

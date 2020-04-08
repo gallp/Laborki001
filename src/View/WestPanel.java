@@ -16,6 +16,8 @@ public class WestPanel extends JPanel {
     private JButton btn005;
     private JButton btn006;
     private JButton btn007;
+    private JButton btn008;
+
     private WestPanelButtonListener listener;
 
     public WestPanel() {
@@ -83,7 +85,20 @@ public class WestPanel extends JPanel {
                 }
             }
         });
+
+        btn008.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if(listener != null) {
+                    listener.btn08Clicked();
+                }
+            }
+        });
     }
+
+
+
+
 
     public void setWestPaneButtonListener (WestPanelButtonListener listener) {
         this.listener = listener;
@@ -107,6 +122,7 @@ public class WestPanel extends JPanel {
         btn005 = new JButton("Zadanie 2.1");
         btn006 = new JButton("Zadanie 2.2");
         btn007 = new JButton("Zadanie 4.1");
+        btn008 = new JButton("Zadanie 4.2");
 
 
         add(btn001,gc);
@@ -122,6 +138,8 @@ public class WestPanel extends JPanel {
         add(btn006,gc);
         gc.gridy++;
         add(btn007,gc);
+        gc.gridy++;
+        add(btn008,gc);
         gc.gridy++;
         gc.weighty = 9;
         add(new JLabel("-------"),gc);
